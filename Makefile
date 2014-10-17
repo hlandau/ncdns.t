@@ -6,7 +6,7 @@ call: all
 
 .gotten:
 	touch .gotten
+	GOPATH=$(shell pwd) go get github.com/hlandau/ncdns
 
 get: .gotten
-	GOPATH=$(shell pwd) go get github.com/hlandau/ncdns
 
