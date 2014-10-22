@@ -5,8 +5,7 @@ call: all
 	sudo setcap 'cap_net_bind_service=+ep' bin/ncdns
 
 .gotten:
-	touch .gotten
 	GOPATH=$(shell pwd) go get github.com/hlandau/ncdns
+	touch .gotten
 
 get: .gotten
-
