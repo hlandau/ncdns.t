@@ -77,6 +77,35 @@ ncdns uses a configuration file which is looked for at `./etc/ncdns.conf` and
 line. An annotated example configuration file `ncdns.conf.example` is available
 in doc.
 
+You will need to setup a `namecoind`, `namecoin-qt` or compatible Namecoin node
+and enable the JSON-RPC interface. You will then need to provide `ncdns` with
+the address of this interface and any necessary username and password via the
+configuration file.
+
+If you only want to resolve .bit names yourself, here is a suggested setup on
+Linux:
+
+  - Install `namecoind` (or `namecoin-qt`) and set it to start automatically
+    at boot or login. Set up the JSON-RPC interface and make sure it works
+    by making a test query: `namecoind name_show d/example`.
+
+  - Write a ncdns configuration file and set ncdns up to start at boot.
+    Since Unbound will tie up port 53, set a different port (ideally one >=1024,
+    so it needn't be run as root.) Test that ncdns works by trying to resolve
+    a `.bit` domain. If you want to use DNSSEC, generate keys as shown above
+    and configure ncdns appropriately.
+
+  - Install and setup the Unbound recursive resolver on your system. Set it up
+    to start at boot. See above for configuration suggestions. If you wish to
+    use DNSSEC, add the ncdns DNSKEY to Unbound as a trust anchor as shown
+    above. (Make sure Unbound listens only on localhost.)
+
+  - Edit `/etc/resolv.conf` to point to the Unbound resolver at 127.0.0.1.
+    (If this file is generated automatically via DHCP or similar, you may
+     find these changes keep getting wiped out. Either reconfigure whatever
+     keeps overwriting it to stop doing so, or, as a stopgap measure, make
+     the file immutable using `chattr +i`.)
+
 LICENSE
 -------
   Licenced under the GPLv3 or later.
