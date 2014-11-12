@@ -1,11 +1,34 @@
-all: .gotten
-	GOPATH=$(shell pwd) go build -o bin/ncdns github.com/hlandau/ncdns
+PROJNAME=github.com/hlandau/ncdns
+BINARIES=$(PROJNAME)
 
 call: all
 	sudo setcap 'cap_net_bind_service=+ep' bin/ncdns
 
+#####################################################################
+# 1.1
+ifeq ($(GOPATH),)
+GOPATH := $(shell pwd)
+endif
+ifeq ($(GOBIN),)
+GOBIN := $(GOPATH)/bin
+endif
+
+DIRS=src bin public
+
+all: $(DIRS)
+	go install $(BUILDFLAGS) $(BINARIES)
+
+$(DIRS): | .gotten
+	if [ ! -e "src" ]; then \
+	  ln -s $(GOPATH)/src src; \
+	fi
+	if [ ! -e "bin" ]; then \
+		ln -s $(GOBIN) bin; \
+	fi
+
 .gotten:
-	GOPATH=$(shell pwd) go get github.com/hlandau/ncdns
+	go get $(PROJNAME)
 	touch .gotten
 
-get: .gotten
+test:
+	go test $(BINARIES)
