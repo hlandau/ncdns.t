@@ -31,4 +31,4 @@ $(DIRS): | .gotten
 	touch .gotten
 
 test:
-	go test $(BINARIES)
+	go test -cover -v $(PROJNAME)/...
