@@ -70,6 +70,10 @@ as a trust anchor to unbound like so:
 `bit.key` should be the file containing the KSK DNSKEY (or DS) which ncdns is
 configured to use.
 
+Building
+--------
+Run `make`. The source repository will be retrieved via `go get` automatically. You must have the Go compiler tools installed.
+
 Configuration
 -------------
 ncdns uses a configuration file which is looked for at `./etc/ncdns.conf` and
