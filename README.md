@@ -1,5 +1,5 @@
 ncdns
------
+=====
 
 A Go daemon to bridge Namecoin to DNS. The daemon acts as an authoritative
 nameserver and queries a Namecoin daemon over JSON-RPC in order to obtain zone
@@ -106,7 +106,7 @@ Linux:
      keeps overwriting it to stop doing so, or, as a stopgap measure, make
      the file immutable using `chattr +i`.)
 
-LICENSE
+Licence
 -------
-  Licenced under the GPLv3 or later.
-  © 2014 Hugo Landau <hlandau@devever.net>
+    Licenced under the GPLv3 or later.
+    © 2014 Hugo Landau <hlandau@devever.net>
