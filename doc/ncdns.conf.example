@@ -1,3 +1,5 @@
+
+[ncdns]
 ### This is a TOML configuration file. Values must be in quotes where shown.
 
 ### The interface to bind to. Defaults to ":53", which causes ncdns to attempt to
@@ -8,28 +10,28 @@
 ###   sudo setcap 'cap_net_bind_service=+ep' ./ncdns
 ###
 ### On BSD, there are sysctls to disable the low port restrictions.
-#Bind="127.0.0.1:53"
+#bind="127.0.0.1:53"
 
 ### Path to the file containing the KSK public key.
-#PublicKey="etc/Kbit.+008+12345.key"
+#publickey="etc/Kbit.+008+12345.key"
 
 ### Path to the file containing the KSK private key.
-#PrivateKey="etc/Kbit.+008+12345.private"
+#privatekey="etc/Kbit.+008+12345.private"
 
 ### Path to the file containing the ZSK public key.
-#ZonePublicKey="etc/Kbit.+008+12345.key"
+#zonepublickey="etc/Kbit.+008+12345.key"
 
 ### Path to the file containing the ZSK private key.
-#ZonePrivateKey="etc/Kbit.+008+12345.private"
+#zoneprivatekey="etc/Kbit.+008+12345.private"
 
 ### The address, in "hostname:port" format, of the Namecoin JSON-RPC interface.
-#NamecoinRPCAddress="127.0.0.1:8336"
+#namecoinrpcaddress="127.0.0.1:8336"
 
 ### The username with which to connect to the Namecoin JSON-RPC interface.
-#NamecoinRPCUsername="user"
+#namecoinrpcusername="user"
 
 ### The password with which to connect to the Namecoin JSON-RPC interface.
-#NamecoinRPCPassword="password"
+#namecoinrpcpassword="password"
 
 ### ncdns needs to be able to state the hostname and IP address at which the
 ### nameserver lies. If SelfName is specified, ncdns lists the name specified as
@@ -44,9 +46,9 @@
 ###
 ### The default value of SelfIP is the bogus IP of "127.127.127.127", which will
 ### work acceptably in some cases (e.g. with Unbound).
-#SelfName="ns1.example.com."
-#SelfIP="192.0.2.1"
+#selfname="ns1.example.com."
+#selfip="192.0.2.1"
 
 ### ncdns caches values retrieved from Namecoin. This value limits the number of
 ### items ncdns may store in its cache. The default value is 100.
-#CacheMaxEntries=100
+#cachemaxentries=100
