@@ -51,4 +51,11 @@
 
 ### ncdns caches values retrieved from Namecoin. This value limits the number of
 ### items ncdns may store in its cache. The default value is 100.
-#cachemaxentries=100
+#cachemaxentries=10
+
+### Set this to enable the HTTP server.
+#httplistenaddr=":8202"
+
+### The template directory is usually detected automatically. If it cannot be found
+### automatically, you must set the full path to it here manually.
+#tplpath=".../tpl"
