@@ -2,7 +2,7 @@ PROJNAME=github.com/hlandau/ncdns
 BINARIES=$(PROJNAME) $(PROJNAME)/ncdt
 
 call: all
-	sudo setcap 'cap_net_bind_service=+ep' bin/ncdns
+	#sudo setcap 'cap_net_bind_service=+ep' bin/ncdns
 
 #####################################################################
 # 1.1
