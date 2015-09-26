@@ -36,6 +36,11 @@ unbound configuration:
         name: bit.
         stub-addr: 127.0.0.1@1153
 
+If not using DNSSEC, also add:
+
+    server:
+      domain-insecure: bit.
+
 Note how you can specify a port other than 53. This allows you to run both
 Unbound and ncdns on the same machine. Alternately, you could add an additional
 loopback IP address (127.0.0.2) and bind ncdns to that. This is useful if your
