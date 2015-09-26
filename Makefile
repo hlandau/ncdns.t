@@ -7,10 +7,11 @@ call: all
 #####################################################################
 # 1.1
 ifeq ($(GOPATH),)
-GOPATH := $(shell pwd)
+# for some reason export is necessary for FreeBSD's gmake
+export GOPATH := $(shell pwd)
 endif
 ifeq ($(GOBIN),)
-GOBIN := $(GOPATH)/bin
+export GOBIN := $(GOPATH)/bin
 endif
 
 DIRS=src bin public
