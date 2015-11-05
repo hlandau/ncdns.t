@@ -32,9 +32,9 @@ unbound configuration:
 
     server:
       do-not-query-localhost: no
-      stub-zone:
-        name: bit.
-        stub-addr: 127.0.0.1@1153
+    stub-zone:
+      name: bit.
+      stub-addr: 127.0.0.1@1153
 
 If not using DNSSEC, also add:
 
