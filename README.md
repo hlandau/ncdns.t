@@ -6,7 +6,8 @@ nameserver and queries a Namecoin daemon over JSON-RPC in order to obtain zone
 data.
 
 The daemon can optionally sign zones with DNSSEC and supports the use of DS
-records in Namecoin.
+records in Namecoin. It works best when used by Unbound or another recursive
+resolver, or as an authoritative nameserver for a stub zone.
 
 Using ncdns to provide a suffix
 -------------------------------
@@ -36,10 +37,12 @@ unbound configuration:
       name: bit.
       stub-addr: 127.0.0.1@1153
 
-If not using DNSSEC, also add:
+If you don't want to use DNSSEC, also add:
 
     server:
       domain-insecure: bit.
+
+If you do want to use DNSSEC, see the instructions below.
 
 Note how you can specify a port other than 53. This allows you to run both
 Unbound and ncdns on the same machine. Alternately, you could add an additional
@@ -78,14 +81,34 @@ configured to use.
 
 Building
 --------
-Run `make`. The source repository will be retrieved via `go get` automatically. You must have the Go compiler tools installed.
+
+On non-Windows platforms:
+
+1. Ensure you have the Go tools installed.
+
+2. Run `make`. The source repository will be retrieved via `go get`
+   automatically.  You must have the Go compiler tools installed.
+
+On Windows platforms:
+
+1. Ensure you have the Go tools installed.
+
+2. Ensure you have the GOPATH environment variable set. (For those not not
+   familar with Go, setting it to the path to an empty directory will suffice.
+   The directory will be filled with build files.)
+
+3. Run `go get github.com/hlandau/ncdns`. The ncdns source code will be
+   retrieved automatically and ncdns will be built. The binary will be at
+   $GOPATH/bin/ncdns.
+
+ncdns can be run as a Windows service; see the output of `ncdns --help`.
 
 Configuration
 -------------
-ncdns uses a configuration file which is looked for at `../etc/ncdns.conf` and
-`/etc/ncdns/ncdns.conf`. You can override this and all options on the command
-line. An annotated example configuration file `ncdns.conf.example` is available
-in doc.
+ncdns uses a configuration file which is looked for at `../etc/ncdns.conf`
+(relative to the executable path) and `/etc/ncdns/ncdns.conf`. You can override
+this and all options on the command line. An annotated example configuration
+file `ncdns.conf.example` is available in doc.
 
 You will need to setup a `namecoind`, `namecoin-qt` or compatible Namecoin node
 and enable the JSON-RPC interface. You will then need to provide `ncdns` with
@@ -119,4 +142,4 @@ Linux:
 Licence
 -------
     Licenced under the GPLv3 or later.
-    © 2014 Hugo Landau <hlandau@devever.net>
+    © 2014-2015 Hugo Landau <hlandau@devever.net>
