@@ -58,4 +58,4 @@
 
 ### The template directory is usually detected automatically. If it cannot be found
 ### automatically, you must set the full path to it here manually.
-#tplpath=".../tpl"
+#tplpath="../tpl"
