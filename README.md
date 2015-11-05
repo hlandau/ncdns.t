@@ -82,7 +82,7 @@ Run `make`. The source repository will be retrieved via `go get` automatically. 
 
 Configuration
 -------------
-ncdns uses a configuration file which is looked for at `./etc/ncdns.conf` and
+ncdns uses a configuration file which is looked for at `../etc/ncdns.conf` and
 `/etc/ncdns/ncdns.conf`. You can override this and all options on the command
 line. An annotated example configuration file `ncdns.conf.example` is available
 in doc.
