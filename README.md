@@ -25,7 +25,7 @@ would be desirable.)
 
 Using ncdns with a recursive resolver
 -------------------------------------
-Of course the daemon can also be use simply as an authoritative nameserver for
+Of course the daemon can also be used simply as an authoritative nameserver for
 bit. directly. One way to do this is to run a recursive resolver (such as
 Unbound) and configure it to serve the zone as a 'stub zone'. Here is an example
 unbound configuration:
